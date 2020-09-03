@@ -1,31 +1,38 @@
 import React from 'react'
+import ToDoItem from './ToDoItem'
 
 const MainContent = () => {
-  const date = new Date(2018, 6 ,31 ,21 );
-  const hours = date.getHours();
-
-  let timeOfDay;  
-  
-  const styles = {
-    color: "#FF8C00", 
-    backgroundColor: "#FF2D00",
-    fontSize: "100px",
-    textAlign: "center"
-  }
-
-  if (hours < 12 ){
-    timeOfDay = "morning";
-    styles.color = "#04756F"
-  } else if ( hours > 12 && hours < 17 ) {
-    timeOfDay = "afternoon";
-    styles.color = "#8914A3"
-  } else {
-    timeOfDay = "night";
-    styles.color = "#D90000"
-  }
 
   return (
-  <h1 style={styles} > Good {timeOfDay}!</h1>
+    <div className="contacts">
+            <div className="contact-card">
+                <img src="http://placekitten.com/300/200"/>
+                <h3>Mr. Whiskerson</h3>
+                <p>Phone: (212) 555-1234</p>
+                <p>Email: mr.whiskaz@catnap.meow</p>
+            </div>
+            
+            <div className="contact-card">
+                <img src="http://placekitten.com/400/200"/>
+                <h3>Fluffykins</h3>
+                <p>Phone: (212) 555-2345</p>
+                <p>Email: fluff@me.com</p>
+            </div>
+            
+            <div className="contact-card">
+                <img src="http://placekitten.com/400/300"/>
+                <h3>Destroyer</h3>
+                <p>Phone: (212) 555-3456</p>
+                <p>Email: ofworlds@yahoo.com</p>
+            </div>
+            
+            <div className="contact-card">
+                <img src="http://placekitten.com/200/100"/>
+                <h3>Felix</h3>
+                <p>Phone: (212) 555-4567</p>
+                <p>Email: thecat@hotmail.com</p>
+            </div>
+        </div>   
   )
 }
 export default  MainContent;

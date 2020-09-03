@@ -1,17 +1,31 @@
 import React from 'react'
 
-export default function MainContent() {
+const MainContent = () => {
+  const date = new Date(2018, 6 ,31 ,21 );
+  const hours = date.getHours();
+
+  let timeOfDay;  
+  
+  const styles = {
+    color: "#FF8C00", 
+    backgroundColor: "#FF2D00",
+    fontSize: "100px",
+    textAlign: "center"
+  }
+
+  if (hours < 12 ){
+    timeOfDay = "morning";
+    styles.color = "#04756F"
+  } else if ( hours > 12 && hours < 17 ) {
+    timeOfDay = "afternoon";
+    styles.color = "#8914A3"
+  } else {
+    timeOfDay = "night";
+    styles.color = "#D90000"
+  }
+
   return (
-    <main>
-      <nav>
-          <h1>Hello a third time!</h1>
-          <ul>
-              <li>Thing 1</li>
-              <li>Thing 2</li>
-              <li>Thing 3</li>
-          </ul>
-      </nav>
-      <p>This is where most of my content will go...</p>
-    </main>
+  <h1 style={styles} > Good {timeOfDay}!</h1>
   )
 }
+export default  MainContent;

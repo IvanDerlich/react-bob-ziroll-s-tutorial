@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Header() {
-  return (
-    <header>
-      This is the header
+const Header = () => (
+    <header className="navbar">      
+        This is the header      
     </header>
-  )
-}
+)
+
+export default Header

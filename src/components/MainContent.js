@@ -1,20 +1,11 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React from 'react'
-import Joke from './Joke'
-import jokesData from './jokesData'
+import Products from './Products'
+import vschoolProducts from './vschoolProducts'
 
-const MainContent = () => {
-
-  const jokesComponents = jokesData.map(joke => <Joke 
-    question={joke.question}
-    punchLine={joke.punchLine}
-    key={joke.id}
-  />)   
-  
+export default function MainContent() {
   return (
-    <div className="contacts">      
-      {jokesComponents}      
-    </div>   
+    <div>
+      {vschoolProducts.map((item) => <Products key={item.id}product={item}/>)}
+    </div>
   )
 }
-export default  MainContent;

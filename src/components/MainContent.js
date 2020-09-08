@@ -31,11 +31,7 @@ class App extends React.Component {
         </div>
       </div> 
     )
-  }    
-
-  componentDidMount(){
-    console.log("Mount")
-  }  
+  }      
 
   componentDidUpdate(prevProps, prevState){
     console.log("Update")    

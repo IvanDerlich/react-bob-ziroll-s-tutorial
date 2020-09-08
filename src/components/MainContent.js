@@ -1,63 +1,33 @@
 import React from 'react'
-import randomcolor from 'randomcolor'
 
-class App extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      count: 0,
-      color: randomcolor()
-    }
-    this.increment = this.increment.bind(this)
-    this.decrement = this.decrement.bind(this)
+export default class MainContent extends React.Component {
+  constructor(props) {
+      super()
+      this.state = {
+          isLoggedIn: false
+      }
+      this.toggleLoggedState = this.toggleLoggedState.bind(this)
   }
-  
+
+  toggleLoggedState(){
+    this.setState(prevState => {
+        return {
+            isLoggedIn: !this.state.isLoggedIn
+        }
+    })
+  }  
+
   render(){
-    console.log("Render")
-    return(   
-      <div>
-        <div>
-          <h1 style={{color: this.state.color}}>{this.state.count}</h1>
-          <button            
-            onClick={this.increment}
-          >
-            Increment!
-          </button>
-          <button            
-            onClick={this.decrement}
-          >
-            Decrement!
-          </button>
-        </div>
-      </div> 
-    )
-  }      
-
-  componentDidUpdate(prevProps, prevState){
-    console.log("Update")    
-    if(prevState.count !== this.state.count){
-        this.setState( prevState => {
-            return{
-                color: randomcolor()
-            }
-        })
-    }    
-  }
-
-  increment(){         
-    this.setState( prevState => {
-      return {
-        count: prevState.count + 1        
-      }
-    })
-  }
-  decrement(){         
-    this.setState( prevState => {
-      return {
-        count: prevState.count - 1        
-      }
-    })
+    const inOrOut = this.state.isLoggedIn ? "IN" : "OUT"
+    const titleText = "LOGGED " + inOrOut
+    const buttonText = "LOG " + inOrOut
+    return(
+            <div>
+                <h1> {titleText}</h1> 
+                <button 
+                    onClick={this.toggleLoggedState}
+        >{buttonText}</button>
+            </div>
+        )   
   }
 }
-
-export default App

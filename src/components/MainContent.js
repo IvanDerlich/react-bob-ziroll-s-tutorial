@@ -1,63 +1,39 @@
 import React from 'react'
-import randomcolor from 'randomcolor'
 
-class App extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      count: 0,
-      color: randomcolor()
+export default class App extends React.Component {
+
+    constructor(){
+        super()
+        this.state = {
+            loading: false,
+            character: {dsfg:"sdfgd"}         
+        }
     }
-    this.increment = this.increment.bind(this)
-    this.decrement = this.decrement.bind(this)
-  }
-  
-  render(){
-    console.log("Render")
-    return(   
-      <div>
-        <div>
-          <h1 style={{color: this.state.color}}>{this.state.count}</h1>
-          <button            
-            onClick={this.increment}
-          >
-            Increment!
-          </button>
-          <button            
-            onClick={this.decrement}
-          >
-            Decrement!
-          </button>
-        </div>
-      </div> 
-    )
-  }      
 
-  componentDidUpdate(prevProps, prevState){
-    console.log("Update")    
-    if(prevState.count !== this.state.count){
-        this.setState( prevState => {
-            return{
-                color: randomcolor()
-            }
+    componentDidMount() {        
+        this.setState({
+            loading: true,
         })
-    }    
-  }
-
-  increment(){         
-    this.setState( prevState => {
-      return {
-        count: prevState.count + 1        
-      }
-    })
-  }
-  decrement(){         
-    this.setState( prevState => {
-      return {
-        count: prevState.count - 1        
-      }
-    })
-  }
+        fetch("https://swapi.dev/api/people/5")
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                this.setState({
+                        character: data,
+                        loading: false
+                    }
+                )
+            })        
+    }
+    
+    render(){
+        const text = this.state.loading ?
+            "Loading..." : 
+            this.state.character.name
+        return(   
+            <div>      
+                {text}
+            </div> 
+          )
+    }
 }
-
-export default App

@@ -4,36 +4,33 @@ export default class App extends React.Component {
 
     constructor(){
         super()
-        this.state = {
-            loading: false,
-            character: {dsfg:"sdfgd"}         
-        }
+        this.state = {value: ''};
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentDidMount() {        
-        this.setState({
-            loading: true,
-        })
-        fetch("https://swapi.dev/api/people/5")
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                this.setState({
-                        character: data,
-                        loading: false
-                    }
-                )
-            })        
+    handleChange(event) {
+        this.setState({value: event.target.value});
     }
-    
-    render(){
-        const text = this.state.loading ?
-            "Loading..." : 
-            this.state.character.name
+
+    handleSubmit(event) {
+        alert('Your favorite flavor is: ' + this.state.value);
+        event.preventDefault();
+    }
+
+    render(){ 
         return(   
-            <div>      
-                {text}
-            </div> 
+            <form onSubmit={this.handleSubmit}>
+                <label>
+                    Pick your favorite flavor:
+                    <select value={this.state.value} onChange={this.handleChange}>            <option value="grapefruit">Grapefruit</option>
+                    <option value="lime">Lime</option>
+                    <option value="coconut">Coconut</option>
+                    <option value="mango">Mango</option>
+                    </select>
+                </label>
+                <input type="submit" value="Submit" />
+            </form>
           )
     }
 }

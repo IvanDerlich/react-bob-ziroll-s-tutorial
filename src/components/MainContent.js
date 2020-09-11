@@ -2,14 +2,11 @@ import React from 'react'
 
 export default class App extends React.Component {
 
-    constructor(){
-        super()
-        this.state = {
-            topText:"",
-            bottomText:"",
-            randomImg: "http://i.imgflip.com/1bij.jpg",
-            allMemeImgs: []
-        }
+    state = {
+        topText:"",
+        bottomText:"",
+        randomImg: "http://i.imgflip.com/1bij.jpg",
+        allMemeImgs: []
     }
 
     componentDidMount() {
@@ -19,18 +16,15 @@ export default class App extends React.Component {
                 const memes = response.data.memes
                 this.setState({allMemeImgs: memes})
             })
-        this.handleChange =  this.handleChange.bind(this)
-        this.randomlyPickImage = this.randomlyPickImage.bind(this)
     }
    
-    handleChange(event){        
+    handleChange = event => {        
         const {name, value} = event.target
         this.setState({[name]:value})
     }
 
-    randomlyPickImage(event){        console.log("Randomly pick an Image")        
+    randomlyPickImage = event => {      
         const pickedImg = this.state.allMemeImgs[Math.floor(Math.random() * this.state.allMemeImgs.length)]
-        console.log(pickedImg)
         this.setState({
             randomImg: pickedImg.url
         })

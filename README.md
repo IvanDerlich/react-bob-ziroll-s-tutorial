@@ -4,6 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 https://scrimba.com/p/p7P5Hd/cV7M2uR
 
+# Deploying is pending
+
+This project deserves deployment when I have time.
+
 ## Available Scripts
 
 In the project directory, you can run:

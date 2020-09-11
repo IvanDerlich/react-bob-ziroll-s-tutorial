@@ -118,6 +118,6 @@ footer {
   display: flex;
   align-items: center;
   background: #6441A5;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #2a0845, #6441A5);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #2a0845, #6441A5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to right, #c5af91, #a18cca);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #beb5c5, #5da541); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
